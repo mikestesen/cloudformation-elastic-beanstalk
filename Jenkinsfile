@@ -29,9 +29,11 @@ pipeline {
                 //         '''
                 //     }
 
-                withCredentials([[$class: 'aws-credentials', credentialsId: 'mike_nesets', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                AWS("--region=us-east-2 cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test")
-    }
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'mike_nesets']]) {
+                    sh '''
+                        # Deploy CloudFormation Template
+                        aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
+                        '''    }
             }
         }
     }
