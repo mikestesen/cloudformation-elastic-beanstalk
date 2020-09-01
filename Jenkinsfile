@@ -35,7 +35,7 @@ pipeline {
                 //         aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
                 //         '''    }
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
-                    cfnUpdate(stack:'my-stack', file:'template.yaml')
+                    cfnUpdate(stack:'eb-test', file:'infrastructure/EB_test.template')
                 }
             }
         }
