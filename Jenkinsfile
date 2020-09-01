@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Upload') {
             steps {
-                withAWS(credentials:'mike_nesets'){
+                withAWS(region:'us-east-2',credentials:'mike_nesets'){
                     s3Upload(file:'target/hello-world-1.0.zip', bucket:'nesets-tomcat-eb', path:'hello-world-1.0.zip')
                 }
             }
