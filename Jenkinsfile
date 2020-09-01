@@ -1,3 +1,4 @@
+
 pipeline {
     agent {
         docker {
@@ -20,7 +21,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                withAWS((region:'us-east-2',credentials:'mike_nesets'){
+                withAWS(region:'us-east-2',credentials:'mike_nesets'){
                     sh '''
                         # Deploy CloudFormation Template
                         aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
