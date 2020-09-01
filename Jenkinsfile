@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Upload') {
             steps {
-                s3Upload(file:'target/hello-world-1.0.zip', bucket:'nesets-tomcat-eb', path:'hello-world-1.0.zip')
+                withAWS(credentials:'mike-nesets'){
+                    s3Upload(file:'target/hello-world-1.0.zip', bucket:'nesets-tomcat-eb', path:'hello-world-1.0.zip')
+                }
             }
         }
     }
