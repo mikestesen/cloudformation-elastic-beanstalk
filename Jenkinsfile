@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Upload') {
             steps {
-                s3Upload(file:'tomcat-hello-1.0.zip', bucket:'nesets-tomcat-eb', path:'target/hello-world-1.0.zip')
+                s3Upload(file:'target/tomcat-hello-1.0.zip', bucket:'nesets-tomcat-eb', path:'hello-world-1.0.zip')
             }
         }
     }
