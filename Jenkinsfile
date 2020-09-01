@@ -11,5 +11,10 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
+        stage('Upload') {
+            steps {
+                s3Upload(file:'tomcat-hello.zip', bucket:'nesets-tomcat-eb', path:'path/to/target/file.txt')
+            }
+        }
     }
 }
