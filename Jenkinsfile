@@ -22,12 +22,12 @@ pipeline {
             steps {
                 withAwsCli(
                     credentialsId: 'mike_nesets',
-                    defaultRegion: 'us-east-2'
+                    defaultRegion: 'us-east-2') {
                     sh '''
                         # Deploy CloudFormation Template
                         aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
                         '''
-                )
+                    }
             }
         }
     }
