@@ -609,7 +609,7 @@
       "Properties" : {
         "ApplicationName" : { "Ref" : "SampleApplication" },
          "Description" :  "AWS Elastic Beanstalk Environment running Tomcat Hello World",
-         "SolutionStackName" : "Tomcat 8.5 with Java 8 running on 64bit Amazon Linux",
+         "SolutionStackName" : "Tomcat 8.5 with Corretto 8 running on 64bit Amazon Linux",
          "VersionLabel" : { "Ref" : "SampleApplicationVersion" },
          "OptionSettings" : [
            {"Namespace" : "aws:autoscaling:launchconfiguration", "OptionName" : "SSHSourceRestriction", "Value" : { "Fn::Join" : [ "", ["tcp,22,22,", { "Ref" : "BastionSecurityGroup" }]]}},
