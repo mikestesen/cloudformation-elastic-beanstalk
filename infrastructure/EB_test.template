@@ -598,7 +598,7 @@
         "Description" : "Version 1.0",
         "ApplicationName" : { "Ref" : "SampleApplication" },
         "SourceBundle" : {
-          "S3Bucket" : { "Fn::Join" : ["-", ["nesets-tomcat-eb", { "Ref" : "AWS::Region" }]]},
+          "S3Bucket" : "nesets-tomcat-eb",
           "S3Key" : "tomcat-hello.zip"
         }
       }
