@@ -1,3 +1,4 @@
+@Library('github.com/releaseworks/jenkinslib') _
 
 pipeline {
     agent {
@@ -21,12 +22,16 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                withAWS(region:'us-east-2',credentials:'mike_nesets'){
-                    sh '''
-                        # Deploy CloudFormation Template
-                        aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
-                        '''
-                    }
+                // withAWS(region:'us-east-2',credentials:'mike_nesets'){
+                //     sh '''
+                //         # Deploy CloudFormation Template
+                //         aws cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test
+                //         '''
+                //     }
+
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'mike_nesets', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                AWS("--region=us-east-2 cloudformation deploy --template infrastrcture/EB_test.template --stack-name eb-test")
+    }
             }
         }
     }
