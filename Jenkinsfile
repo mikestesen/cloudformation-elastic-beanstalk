@@ -16,7 +16,7 @@ pipeline {
         stage('Upload') {
             steps {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
-                    s3Upload(file:'target/hello-world-1.0.zip', bucket:'nesets-tomcat-eb', path:'hello-world-1.0.zip')
+                    s3Upload(file:'target/root-1.0.zip', bucket:'nesets-tomcat-eb', path:'root-1.0.zip')
                 }
             }
         }
