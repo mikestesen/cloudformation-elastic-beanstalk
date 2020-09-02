@@ -13,6 +13,5 @@
 
 	<p>
 		This was triggered by Jenkins with a CI/CD Pipeline!
-		Test
 	</p>
 </body>
