@@ -599,7 +599,7 @@
         "ApplicationName" : { "Ref" : "SampleApplication" },
         "SourceBundle" : {
           "S3Bucket" : "nesets-tomcat-eb",
-          "S3Key" : "hello-world-1.0.zip"
+          "S3Key" : "root.zip"
         }
       }
     },
