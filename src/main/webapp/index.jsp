@@ -10,4 +10,8 @@
 	<p>
 		You are coming from 
 		<%= request.getRemoteAddr()  %></p>
+
+	<p>
+		This was triggered by Jenkins with a CI/CD Pipeline!
+	</p>
 </body>
