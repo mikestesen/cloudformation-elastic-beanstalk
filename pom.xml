@@ -4,9 +4,9 @@
  
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.example</groupId>
-  <artifactId>hello-world</artifactId>
+  <artifactId>root</artifactId>
   <version>1.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <name>Java Sample App</name>
  
   <properties>
