@@ -599,7 +599,7 @@
         "ApplicationName" : { "Ref" : "SampleApplication" },
         "SourceBundle" : {
           "S3Bucket" : "nesets-tomcat-eb",
-          "S3Key" : "root.zip"
+          "S3Key" : "root.war"
         }
       }
     },
