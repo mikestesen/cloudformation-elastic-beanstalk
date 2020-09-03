@@ -12,7 +12,6 @@
 		<%= request.getRemoteAddr()  %></p>
 
 	<p>
-		This was triggered by Jenkins with a CI/CD Pipeline!
-		TEST
+		This was triggered by Jenkins with a CI/CD Pipeline via AWS ElasticBeanstalk CLI!
 	</p>
 </body>
