@@ -9,26 +9,34 @@ pipeline {
     }
     stages {
         stage('Deploy Infrastructure'){
-            steps {
+            node {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                     cfnUpdate(stack:'eb-test', file:'infrastructure/EB_test.template')
                 }
             }
         }
         stage('Build') { 
-            steps {
+            node {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Upload') {
-            steps {
+            node {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                     s3Upload(file:'target/root.war', bucket:'nesets-tomcat-eb', path:'root.war')
                 }
             }
         }
         stage('Dev_App') {
-            steps {
+            node {
+                withAWS(region:'us-east-2',credentials:'mike_nesets'){
+                        sh 'aws elasticbeanstalk create-application-version --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --version-label $BUILD_NUMBER --source-bundle S3Bucket=nesets-tomcat-eb,S3Key=root.war && aws elasticbeanstalk update-environment --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --environment-name eb-t-Samp-Z59L6O7TEMHM --version-label $BUILD_NUMBER'
+                }
+            }
+        }
+        stage('Test_App'){
+            input 'Deploy to Test?x'
+            node {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                         sh 'aws elasticbeanstalk create-application-version --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --version-label $BUILD_NUMBER --source-bundle S3Bucket=nesets-tomcat-eb,S3Key=root.war && aws elasticbeanstalk update-environment --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --environment-name eb-t-Samp-Z59L6O7TEMHM --version-label $BUILD_NUMBER'
                 }
