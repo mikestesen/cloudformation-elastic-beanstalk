@@ -31,7 +31,6 @@ pipeline {
             steps {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                         sh ''' aws s3 ls '''
-                    }
                 }
             }
         }
