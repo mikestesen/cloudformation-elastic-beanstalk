@@ -2,8 +2,8 @@
 
 pipeline {
     agent { 
-        dockerfile {
-            filename 'dockerfile.build'
+        docker {
+            image 'mikestesen/maven-eb'
             args '-v /root/.m2:/root/.m2'
          }
     }
