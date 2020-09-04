@@ -8,7 +8,7 @@ pipeline {
          }
     }
     options { 
-        preserveStashes(buildcount: 40)
+        preserveStashes(buildCount: 40)
     }
     stages {
         stage('Deploy Infrastructure'){
