@@ -28,7 +28,7 @@ pipeline {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                     s3Upload(file:'target/root.war', bucket:'nesets-tomcat-eb', path:'root.war')
                 }
-                stash includes: 'target/**' name: 'target'
+                stash includes: 'target/**', name: 'target'
             }
         }
         stage('Dev_App') {
