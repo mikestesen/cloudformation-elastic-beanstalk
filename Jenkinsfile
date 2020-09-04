@@ -35,7 +35,9 @@ pipeline {
             }
         }
         stage('Test_App'){
-            input message: 'Deploy to Test?', ok: 'Yes'
+            timeout(time: 15, unit: "MINUTES") {
+                input message: 'Do you want to deploy to Test?', ok: 'Yes'
+            }
             steps {
                 withAWS(region:'us-east-2',credentials:'mike_nesets'){
                         sh 'aws elasticbeanstalk create-application-version --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --version-label $BUILD_NUMBER --source-bundle S3Bucket=nesets-tomcat-eb,S3Key=root.war && aws elasticbeanstalk update-environment --application-name eb-test-SampleApplication-1BBWUAQIO9HMT --environment-name eb-t-Samp-Z59L6O7TEMHM --version-label $BUILD_NUMBER'
