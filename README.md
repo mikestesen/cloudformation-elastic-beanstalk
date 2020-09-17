@@ -98,11 +98,11 @@ Each application node has an appconfig-_environment_.properties configuration fi
 
 The correct application version file must be copied to the above location and named for the environment which will be launched. Known application versions are: 
 
-*DTE-Silver
+* DTE-Silver
 
-*DTE-Gold
+* DTE-Gold
 
-*Production
+* Production
 
 ## Launching Applications
 
